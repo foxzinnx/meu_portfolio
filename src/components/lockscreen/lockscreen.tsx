@@ -143,7 +143,7 @@ export const LockScreen = ({ onUnlock }: StartScreenProps) => {
           />
         </div>
         
-        <div className="flex flex-col justify-center items-center h-full relative z-20">
+        <div className="flex flex-col justify-center items-center h-full relative z-20 pb-20 md:pb-0">
           <p className="font-medium text-white text-6xl drop-shadow-lg">
             {time}
           </p>
@@ -151,7 +151,7 @@ export const LockScreen = ({ onUnlock }: StartScreenProps) => {
             {date}
           </p>
           
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-opacity-70 text-center">
+          <div className="absolute bottom-20 md:bottom-10 left-1/2 transform -translate-x-1/2 text-white text-opacity-70 text-center">
             <p className="text-sm mb-2">Pressione Enter ou arraste para cima</p>
             <div className="animate-bounce">
               <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -13,6 +13,12 @@
   font-weight: 500;
 }
 
+@font-face {
+  font-family: 'sf';
+  src: url('/fonts/SFPRODISPLAYBOLD.OTF');
+  font-weight: 600;
+}
+
 body{
   font-family: 'sf', sans-serif;
 }
