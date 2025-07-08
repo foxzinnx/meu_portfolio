@@ -17,7 +17,7 @@ export const WorkSpace = () => {
             )}
             
             <div className="h-screen">
-                <div className='text-white'>Área de trabalho</div>
+                <div className='text-white font-medium'>Área de trabalho</div>
                 
                 <button 
                     onClick={() => setIsLocked(true)}
