@@ -4,7 +4,7 @@ interface StartScreenProps {
   onUnlock?: () => void;
 }
 
-export const StartScreen = ({ onUnlock }: StartScreenProps) => {
+export const LockScreen = ({ onUnlock }: StartScreenProps) => {
   const [time, setTime] = useState(() => {
     const d = new Date();
     return `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StartScreen } from "../startScreen/startScreen";
+import { LockScreen } from '../lockscreen/lockscreen';
 
 export const WorkSpace = () => {
     const [isLocked, setIsLocked] = useState(true);
@@ -12,7 +12,7 @@ export const WorkSpace = () => {
         <div className="relative bg-black">
             {isLocked && (
                 <div className="fixed inset-0 z-50">
-                    <StartScreen onUnlock={handleUnlock} />
+                    <LockScreen onUnlock={handleUnlock} />
                 </div>
             )}
             
