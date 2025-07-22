@@ -59,6 +59,32 @@ const StarryBackground = () => {
 
     generateStars();
 
+    const moveStars = () => {
+      setStars(prevStars => 
+        prevStars.map(star => {
+          const radians = (star.direction * Math.PI) / 180;
+          let newX = star.x + (Math.cos(radians) * 0.02);
+          let newY = star.y + (Math.sin(radians) * 0.02);
+
+          if (newX > 105) newX = -5;
+          if (newX < -5) newX = 105;
+          if (newY > 105) newY = -5;
+          if (newY < -5) newY = 105;
+
+          return {
+            ...star,
+            x: newX,
+            y: newY
+          };
+        })
+      );
+    };
+
+    const starMovementInterval = setInterval(moveStars, 100);
+
+    return () => {
+      clearInterval(starMovementInterval);
+    };
   }, []);
 
   return (
