@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, FileText, User, ExternalLink, Code, X, Folder } from 'lucide-react';
+import { Github, Linkedin, ExternalLink, X, Folder } from 'lucide-react';
 import { LockScreen } from '../lockscreen/lockscreen';
 
 interface DesktopIconProps {
@@ -28,26 +28,6 @@ interface Star {
   direction: number;
 }
 
-interface ShootingStar {
-  id: number;
-  x: number;
-  y: number;
-  angle: number;
-  speed: number;
-  length: number;
-  opacity: number;
-}
-
-interface Comet {
-  id: number;
-  x: number;
-  y: number;
-  angle: number;
-  speed: number;
-  tailLength: number;
-  opacity: number;
-}
-
 interface Project {
   name: string;
   description: string;
@@ -58,9 +38,7 @@ interface Project {
 
 const StarryBackground = () => {
   const [stars, setStars] = useState<Star[]>([]);
-  const [shootingStars, setShootingStars] = useState<ShootingStar[]>([]);
-  const [comets, setComets] = useState<Comet[]>([]);
-
+  
   useEffect(() => {
     const generateStars = () => {
       const newStars: Star[] = [];
@@ -81,72 +59,6 @@ const StarryBackground = () => {
 
     generateStars();
 
-    const moveStars = () => {
-      setStars(prevStars => 
-        prevStars.map(star => {
-          const radians = (star.direction * Math.PI) / 180;
-          let newX = star.x + (Math.cos(radians) * 0.02);
-          let newY = star.y + (Math.sin(radians) * 0.02);
-
-          if (newX > 105) newX = -5;
-          if (newX < -5) newX = 105;
-          if (newY > 105) newY = -5;
-          if (newY < -5) newY = 105;
-
-          return {
-            ...star,
-            x: newX,
-            y: newY
-          };
-        })
-      );
-    };
-
-    const starMovementInterval = setInterval(moveStars, 100);
-
-    const shootingStarInterval = setInterval(() => {
-      if (Math.random() > 0.7) {
-        const newShootingStar: ShootingStar = {
-          id: Date.now(),
-          x: Math.random() * 120 - 20,
-          y: Math.random() * 50,
-          angle: Math.random() * 45 + 15,
-          speed: Math.random() * 2 + 1,
-          length: Math.random() * 80 + 40,
-          opacity: 1
-        };
-        setShootingStars(prev => [...prev, newShootingStar]);
-
-        setTimeout(() => {
-          setShootingStars(prev => prev.filter(s => s.id !== newShootingStar.id));
-        }, 3000);
-      }
-    }, 2000);
-
-    const cometInterval = setInterval(() => {
-      if (Math.random() > 0.8) {
-        const newComet: Comet = {
-          id: Date.now(),
-          x: -10,
-          y: Math.random() * 100,
-          angle: Math.random() * 30 + 15,
-          speed: Math.random() * 1 + 0.5,
-          tailLength: Math.random() * 100 + 60,
-          opacity: 1
-        };
-        setComets(prev => [...prev, newComet]);
-
-        setTimeout(() => {
-          setComets(prev => prev.filter(c => c.id !== newComet.id));
-        }, 8000);
-      }
-    }, 5000);
-
-    return () => {
-      clearInterval(starMovementInterval);
-      clearInterval(shootingStarInterval);
-      clearInterval(cometInterval);
-    };
   }, []);
 
   return (
@@ -308,7 +220,7 @@ const ProjectsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
   );
 };
 
-const DesktopIcon = ({ icon: Icon, label, onClick, href, bgColor = "bg-blue-500" }: DesktopIconProps) => {
+const DesktopIcon = ({ icon: Icon, label, onClick, href }: DesktopIconProps) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const handleClick = () => {
