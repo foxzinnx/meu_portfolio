@@ -136,7 +136,7 @@ export const LockScreen = ({ onUnlock }: StartScreenProps) => {
       >
         <div className="absolute inset-0 z-10">
           <img
-            src="/blackcat.jpg"
+            src="/darkwallpaper.jpg"
             className="object-cover h-full w-full brightness-50 blur-md scale-105 rounded-[4px]"
             alt="Imagem de fundo com gato preto"
             onError={() => console.error('Erro ao carregar a imagem')}
@@ -144,10 +144,10 @@ export const LockScreen = ({ onUnlock }: StartScreenProps) => {
         </div>
         
         <div className="flex flex-col justify-center items-center h-full relative z-20 pb-20 md:pb-0">
-          <p className="font-medium text-white text-6xl drop-shadow-lg">
+          <p className="font-medium text-white text-7xl drop-shadow-lg">
             {time}
           </p>
-          <p className="font-regular text-white text-2xl drop-shadow-lg mt-2">
+          <p className="font-regular text-white text-3xl drop-shadow-lg mt-2">
             {date}
           </p>
           
